@@ -27,20 +27,23 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
 
 # Cache para assets estaticos
+# CSS/JS/imagens sem hash no nome do arquivo: usamos "must-revalidate" em vez
+# de "immutable" para o navegador sempre checar se ha versao nova antes de
+# usar o cache (evita paginas ficarem presas em uma versao antiga do site).
 [[headers]]
   for = "/images/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "*.css"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "*.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "*.woff2"
@@ -50,4 +53,4 @@
 [[headers]]
   for = "*.svg"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
