@@ -70,3 +70,4 @@ Ao pedir uma nova versao da pagina, a versao atual vai para `_backup_v1/` e a no
 - Claude Code (CLI)
 - Netlify CLI (`npm install -g netlify-cli`)
 - Conta Netlify (gratis)
+
