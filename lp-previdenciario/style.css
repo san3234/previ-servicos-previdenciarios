@@ -1779,12 +1779,11 @@ button:focus-visible {
 }
 
 @media (hover: none) {
-  /* Sem mouse, o painel de credenciais fica sempre visivel como overlay
-     (em vez de depender de :hover), mantendo contraste e moldura identicos
-     ao estado de hover do desktop. */
+  /* Sem mouse nao ha hover para revelar o painel de credenciais.
+     Mantemos a foto sempre visivel em cores originais (sem overlay azul
+     permanente) — nome e cargo, que ja ficam fora da foto, sao suficientes. */
   .equipe__panel {
-    opacity: 1;
-    transform: translateY(0);
+    display: none;
   }
 
   .equipe__photo::after {
