@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recebemos sua solicitação | Previ Serviços Previdenciários</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/lp-previdenciario/style.css">
+
+  <style>
+    .thank-you {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background:
+        radial-gradient(45% 55% at 20% 20%, rgba(216, 166, 88, 0.25), transparent 60%),
+        radial-gradient(50% 60% at 85% 15%, rgba(217, 172, 93, 0.18), transparent 65%),
+        radial-gradient(70% 80% at 50% 100%, var(--color-navy) 0%, var(--color-navy-darker) 100%);
+    }
+
+    .thank-you__mark {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .thank-you h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--color-text-on-navy);
+      max-width: 18ch;
+    }
+
+    .thank-you p {
+      margin-top: 1.25rem;
+      color: var(--color-text-on-navy-muted);
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      max-width: 44ch;
+    }
+
+    .thank-you .btn {
+      margin-top: 2.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="thank-you">
+    <span class="thank-you__mark">Previ · Serviços Previdenciários</span>
+    <h1 id="thank-you-title">Recebemos sua solicitação!</h1>
+    <p>Em breve nossa equipe entrará em contato pelo WhatsApp ou e-mail informado para dar continuidade à sua análise previdenciária.</p>
+    <a href="/lp-previdenciario/" class="btn btn--gold">Voltar ao site</a>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const nome = params.get('nome');
+      if (nome) {
+        document.getElementById('thank-you-title').textContent = nome + ', recebemos sua solicitação!';
+      }
+    });
+  </script>
+
+</body>
+</html>

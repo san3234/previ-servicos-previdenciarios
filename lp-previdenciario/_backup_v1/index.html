@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Previ Serviços Previdenciários | Planejamento e Aposentadoria</title>
+  <meta name="description" content="Consultoria previdenciária desde 1996. Descubra a aposentadoria mais vantajosa para o seu caso com análise técnica especializada, conforme a Reforma da Previdência.">
+
+  <meta property="og:title" content="Previ Serviços Previdenciários | Planejamento e Aposentadoria">
+  <meta property="og:description" content="Consultoria previdenciária desde 1996. Descubra a aposentadoria mais vantajosa para o seu caso com análise técnica especializada.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <meta property="og:url" content="">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fontes: DM Serif Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- AOS (usado apenas a partir da secao "Quem Somos", nunca no hero) -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/lp-previdenciario/style.css">
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="/lp-previdenciario/script.js" defer></script>
+</head>
+<body>
+
+  <main>
+
+    <!--
+      SECAO: Hero
+      Arquetipo: Split Assimetrico (62/38)
+      Constraints: Texto com Gradiente (Tipografia), Overlap Elements (Layout),
+                   Glassmorphism (Efeitos Especiais), Selective Color (Cor)
+    -->
+    <section class="hero" id="hero">
+      <div class="hero__dots hero__dots--top" aria-hidden="true"></div>
+      <div class="hero__dots hero__dots--bottom" aria-hidden="true"></div>
+
+      <div class="hero__grid container">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Previ · Serviços Previdenciários desde 1996</p>
+
+          <h1 class="hero__headline">
+            Descubra a <span class="text-gradient-gold">aposentadoria mais vantajosa</span> para o seu caso
+          </h1>
+
+          <p class="hero__subheadline">
+            Análise técnica previdenciária conforme a Reforma da Previdência (EC 103/2019), conduzida
+            por quem já esteve dos dois lados do balcão: ex-servidor do INSS, ex-auditor fiscal da
+            Receita Federal e advogadas especialistas em direito previdenciário.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#contato" class="btn btn--gold">Quero Minha Análise Previdenciária</a>
+            <a href="#sobre" class="hero__link">Conheça a Previ ↓</a>
+          </div>
+        </div>
+
+        <div class="hero__panel">
+          <div class="hero__frame hero__frame--tr" aria-hidden="true"></div>
+          <div class="hero__frame hero__frame--bl" aria-hidden="true"></div>
+
+          <div class="hero__stat glass">
+            <div class="hero__stat-number">
+              <span data-count-to="1000" data-count-suffix="+">0</span>
+            </div>
+            <p class="hero__stat-label">planejamentos previdenciários já elaborados</p>
+          </div>
+
+          <div class="hero__panel-meta">
+            <p>Belo Horizonte &amp; Santa Luzia — MG</p>
+            <p>Atendimento remoto para todo o Brasil e exterior</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      SECAO: Quem Somos
+      Arquetipo: Editorial (layout de revista, texto institucional + coluna de numeros-prova)
+      Constraints: Color Blocking (Cor), Counter Animation (Movimento), Container Narrow (Layout)
+    -->
+    <section class="sobre section" id="sobre">
+      <div class="container sobre__container">
+        <span class="sobre__index" aria-hidden="true">01</span>
+
+        <div class="sobre__text" data-aos="fade-up">
+          <h2 class="sobre__heading">Quase três décadas dedicadas exclusivamente à previdência.</h2>
+          <p class="sobre__lead">
+            Desde <strong>1996</strong> a Previ Consultoria presta serviços exclusivos na área
+            previdenciária, atuando de forma preventiva, consultiva e contenciosa — sempre de
+            acordo com a realidade de cada cliente.
+          </p>
+          <p>
+            Com escritórios em Belo Horizonte e Santa Luzia (MG), atendemos clientes em várias
+            partes do país e do mundo, de forma remota ou presencial, conforme a preferência de
+            cada segurado.
+          </p>
+        </div>
+
+        <div class="sobre__stats">
+          <div class="sobre__stat-block" data-aos="fade-up" data-aos-delay="0">
+            <span class="sobre__stat-value"><span data-count-to="1996">0</span></span>
+            <span class="sobre__stat-caption">Ano de fundação</span>
+          </div>
+
+          <div class="sobre__stat-block sobre__stat-block--gold" data-aos="fade-up" data-aos-delay="100">
+            <span class="sobre__stat-value"><span data-count-to="1000" data-count-suffix="+">0</span></span>
+            <span class="sobre__stat-caption">Planejamentos previdenciários elaborados</span>
+          </div>
+
+          <div class="sobre__stat-block" data-aos="fade-up" data-aos-delay="200">
+            <span class="sobre__stat-value"><span data-count-to="2">0</span></span>
+            <span class="sobre__stat-caption">Escritórios — Belo Horizonte e Santa Luzia (MG)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Previ Serviços Previdenciários. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
