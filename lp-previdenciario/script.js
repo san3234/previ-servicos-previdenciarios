@@ -438,49 +438,38 @@ function initServicos() {
     cards.forEach(card => cardObserver.observe(card));
   }
 
-  /* Rolagem automatica (velocidade media), pausa no hover/toque/drag.
-     Velocidade calculada por tempo decorrido (px/s), nao por frame —
-     assim o ritmo fica igual independente da taxa de atualizacao da tela. */
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const PIXELS_PER_SECOND = 34;
+  /* Rolagem automatica: avanca um card por vez, mantendo cada um visivel
+     por ~1.75s (entre 1.5 e 2s) antes de avancar. Pausa no hover/toque/drag. */
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && cards.length) {
+    const CARD_HOLD_MS = 1750;
+    const cardsArr = Array.from(cards);
     let autoPaused = false;
     let resumeTimer = null;
-    let lastTimestamp = null;
 
     function pauseAutoScroll() {
       autoPaused = true;
-      track.style.scrollSnapType = '';
       clearTimeout(resumeTimer);
     }
 
     function resumeAutoScrollLater(delay = 2500) {
       clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(() => {
-        autoPaused = false;
-        track.style.scrollSnapType = 'none';
-      }, delay);
+      resumeTimer = setTimeout(() => { autoPaused = false; }, delay);
     }
 
-    function autoScrollStep(timestamp) {
-      if (lastTimestamp === null) lastTimestamp = timestamp;
-      const dt = Math.min(timestamp - lastTimestamp, 100);
-      lastTimestamp = timestamp;
+    function advanceToNextCard() {
+      if (autoPaused || isDown) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (maxScroll <= 0) return;
 
-      if (!autoPaused && !isDown) {
-        const maxScroll = track.scrollWidth - track.clientWidth;
-        if (maxScroll > 0) {
-          if (track.scrollLeft >= maxScroll - 1) {
-            autoPaused = true;
-            setTimeout(() => {
-              track.scrollTo({ left: 0, behavior: 'smooth' });
-              resumeAutoScrollLater(1200);
-            }, 1600);
-          } else {
-            track.scrollLeft += (PIXELS_PER_SECOND * dt) / 1000;
-          }
-        }
+      if (track.scrollLeft >= maxScroll - 1) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+        return;
       }
-      requestAnimationFrame(autoScrollStep);
+
+      const activeCard = track.querySelector('.servicos__card.is-active') || cardsArr[0];
+      const activeIndex = cardsArr.indexOf(activeCard);
+      const nextCard = cardsArr[activeIndex + 1] || cardsArr[0];
+      track.scrollTo({ left: nextCard.offsetLeft - track.offsetLeft, behavior: 'smooth' });
     }
 
     track.addEventListener('mouseenter', pauseAutoScroll);
@@ -492,8 +481,7 @@ function initServicos() {
     prev?.addEventListener('click', () => resumeAutoScrollLater());
     next?.addEventListener('click', () => resumeAutoScrollLater());
 
-    track.style.scrollSnapType = 'none';
-    requestAnimationFrame(autoScrollStep);
+    setInterval(advanceToNextCard, CARD_HOLD_MS);
   }
 }
 
