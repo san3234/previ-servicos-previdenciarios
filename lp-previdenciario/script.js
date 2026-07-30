@@ -437,6 +437,64 @@ function initServicos() {
 
     cards.forEach(card => cardObserver.observe(card));
   }
+
+  /* Rolagem automatica (velocidade media), pausa no hover/toque/drag.
+     Velocidade calculada por tempo decorrido (px/s), nao por frame —
+     assim o ritmo fica igual independente da taxa de atualizacao da tela. */
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const PIXELS_PER_SECOND = 34;
+    let autoPaused = false;
+    let resumeTimer = null;
+    let lastTimestamp = null;
+
+    function pauseAutoScroll() {
+      autoPaused = true;
+      track.style.scrollSnapType = '';
+      clearTimeout(resumeTimer);
+    }
+
+    function resumeAutoScrollLater(delay = 2500) {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => {
+        autoPaused = false;
+        track.style.scrollSnapType = 'none';
+      }, delay);
+    }
+
+    function autoScrollStep(timestamp) {
+      if (lastTimestamp === null) lastTimestamp = timestamp;
+      const dt = Math.min(timestamp - lastTimestamp, 100);
+      lastTimestamp = timestamp;
+
+      if (!autoPaused && !isDown) {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        if (maxScroll > 0) {
+          if (track.scrollLeft >= maxScroll - 1) {
+            autoPaused = true;
+            setTimeout(() => {
+              track.scrollTo({ left: 0, behavior: 'smooth' });
+              resumeAutoScrollLater(1200);
+            }, 1600);
+          } else {
+            track.scrollLeft += (PIXELS_PER_SECOND * dt) / 1000;
+          }
+        }
+      }
+      requestAnimationFrame(autoScrollStep);
+    }
+
+    track.addEventListener('mouseenter', pauseAutoScroll);
+    track.addEventListener('mouseleave', () => resumeAutoScrollLater(500));
+    track.addEventListener('touchstart', pauseAutoScroll, { passive: true });
+    track.addEventListener('touchend', () => resumeAutoScrollLater(), { passive: true });
+    track.addEventListener('focusin', pauseAutoScroll);
+    track.addEventListener('focusout', () => resumeAutoScrollLater(500));
+    prev?.addEventListener('click', () => resumeAutoScrollLater());
+    next?.addEventListener('click', () => resumeAutoScrollLater());
+
+    track.style.scrollSnapType = 'none';
+    requestAnimationFrame(autoScrollStep);
+  }
 }
 
 /* ==========================================
