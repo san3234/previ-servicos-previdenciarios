@@ -313,7 +313,7 @@ function initHeroParallax() {
    ========================================== */
 
 function initServiceFoldSeamParallax() {
-  const section = document.querySelector('.service-fold--seamed');
+  const section = document.querySelector('.service-transition-band');
   const seam = section?.querySelector('.service-fold__seam');
   const fill = section?.querySelector('.service-fold__fill');
   if (!section || !seam || !fill) return;
