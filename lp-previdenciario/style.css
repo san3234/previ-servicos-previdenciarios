@@ -2942,10 +2942,26 @@ button:focus-visible {
   background: var(--color-navy-deep);
 }
 
+.service-fold__fill--light {
+  background: var(--color-bg);
+}
+
 .service-fold__container {
   position: relative;
   z-index: 1;
   max-width: 760px;
+}
+
+/* Friso no topo da primeira secao apos o hero, igual a transicao
+   do hero da home (cream -> banda com friso dourado) */
+.legal.legal--top-seam {
+  position: relative;
+  overflow: hidden;
+}
+
+.legal--top-seam .legal__container {
+  position: relative;
+  z-index: 1;
 }
 
 .service-fold h2 {
