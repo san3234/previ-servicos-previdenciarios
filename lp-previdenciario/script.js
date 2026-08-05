@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initHeader();
   initHeroParallax();
+  initServiceFoldSeamParallax();
   initProblemaReveal();
   initSolucaoTimeline();
   initServicos();
@@ -302,6 +303,48 @@ function initHeroParallax() {
       ticking = true;
     }
   }, { passive: true });
+}
+
+/* ==========================================
+   FRISO DAS PAGINAS DE AREA DE ATUACAO
+   Mesmo efeito de paralaxe do friso do hero, mas usando a posicao
+   da propria secao (nao window.scrollY) porque o friso aqui fica
+   mais abaixo na pagina, nao dentro do hero.
+   ========================================== */
+
+function initServiceFoldSeamParallax() {
+  const section = document.querySelector('.legal--top-seam');
+  const seam = section?.querySelector('.service-fold__seam');
+  const fill = section?.querySelector('.service-fold__fill');
+  if (!section || !seam || !fill) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let active = true;
+  let ticking = false;
+
+  const observer = new IntersectionObserver(([entry]) => {
+    active = entry.isIntersecting;
+  }, { threshold: 0 });
+  observer.observe(section);
+
+  function update() {
+    if (active) {
+      const scale = matchMedia('(max-width: 640px)').matches ? 0.5 : 1;
+      const y = Math.max(0, Math.min(320, -section.getBoundingClientRect().top));
+      fill.style.transform = `translate3d(0, ${y * 0.18 * scale}px, 0)`;
+      seam.style.transform = `translate3d(0, ${y * 0.26 * scale}px, 0)`;
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  update();
 }
 
 /* ==========================================

@@ -2933,6 +2933,7 @@ button:focus-visible {
   inset: 0;
   background: linear-gradient(100deg, var(--color-gold) 0%, var(--color-gold-4) 100%);
   clip-path: polygon(0 5%, 100% 0%, 100% 100%, 0 100%);
+  will-change: transform;
 }
 
 .service-fold__fill {
@@ -2940,6 +2941,7 @@ button:focus-visible {
   inset: 7px 0 0 0;
   clip-path: polygon(0 5%, 100% 0%, 100% 100%, 0 100%);
   background: var(--color-navy-deep);
+  will-change: transform;
 }
 
 .service-fold__fill--light {
