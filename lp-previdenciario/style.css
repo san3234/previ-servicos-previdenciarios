@@ -2923,10 +2923,28 @@ button:focus-visible {
    ========================================== */
 
 .service-fold {
+  position: relative;
+  overflow: hidden;
   padding-block: clamp(3rem, 7vw, 5rem);
 }
 
+.service-fold__seam {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, var(--color-gold) 0%, var(--color-gold-4) 100%);
+  clip-path: polygon(0 5%, 100% 0%, 100% 100%, 0 100%);
+}
+
+.service-fold__fill {
+  position: absolute;
+  inset: 7px 0 0 0;
+  clip-path: polygon(0 5%, 100% 0%, 100% 100%, 0 100%);
+  background: var(--color-navy-deep);
+}
+
 .service-fold__container {
+  position: relative;
+  z-index: 1;
   max-width: 760px;
 }
 
