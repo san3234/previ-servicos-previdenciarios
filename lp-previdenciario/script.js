@@ -330,7 +330,12 @@ function initServiceFoldSeamParallax() {
   function update() {
     if (active) {
       const scale = matchMedia('(max-width: 640px)').matches ? 0.5 : 1;
-      const y = Math.max(0, Math.min(320, -section.getBoundingClientRect().top));
+      // O friso fica totalmente dourado enquanto a secao ainda esta a uma
+      // boa distancia do topo, e vai sumindo conforme ela se aproxima do
+      // cabecalho fixo - a mesma logica do friso do hero, so que calculada
+      // a partir da posicao da propria secao em vez do scroll da pagina.
+      const revealPoint = 150;
+      const y = Math.max(0, Math.min(320, revealPoint - section.getBoundingClientRect().top));
       fill.style.transform = `translate3d(0, ${y * 0.18 * scale}px, 0)`;
       seam.style.transform = `translate3d(0, ${y * 0.26 * scale}px, 0)`;
     }
