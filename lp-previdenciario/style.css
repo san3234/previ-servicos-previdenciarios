@@ -308,6 +308,38 @@ button:focus-visible {
   box-shadow: 0 1px 0 var(--color-border);
 }
 
+/* Variante para paginas cujo topo comeca sobre uma foto/fundo escuro
+   (ex: paginas de area de atuacao) - texto claro ate rolar a pagina */
+.site-header__logo .site-header__logo-img--light {
+  display: none;
+}
+
+.site-header--on-dark:not(.header--scrolled) .site-header__logo .site-header__logo-img--dark {
+  display: none;
+}
+
+.site-header--on-dark:not(.header--scrolled) .site-header__logo .site-header__logo-img--light {
+  display: block;
+}
+
+.site-header--on-dark:not(.header--scrolled) .site-header__nav a {
+  color: var(--color-text-on-navy);
+}
+
+.site-header--on-dark:not(.header--scrolled) .site-header__cta.btn--outline {
+  border-color: var(--color-gold-4);
+  color: var(--color-text-on-navy);
+}
+
+.site-header--on-dark:not(.header--scrolled) .site-header__cta.btn--outline:hover {
+  background: var(--color-gold-4);
+  color: var(--color-navy-deep);
+}
+
+.site-header--on-dark:not(.header--scrolled) .site-header__burger span {
+  background: var(--color-text-on-navy);
+}
+
 .site-header__inner {
   display: flex;
   align-items: center;
@@ -2883,6 +2915,74 @@ button:focus-visible {
 
 .legal__body a:hover {
   color: var(--color-navy);
+}
+
+/* ==========================================
+   SERVICE FOLDS (accordion nas paginas de area de atuacao)
+   ========================================== */
+
+.service-folds {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.service-fold {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.service-fold summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 1.5rem 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+  color: var(--color-navy-deep);
+}
+
+.service-fold summary::-webkit-details-marker {
+  display: none;
+}
+
+.service-fold summary::after {
+  content: '+';
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-gold);
+  color: var(--color-gold);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  transition: transform 250ms ease;
+}
+
+.service-fold[open] summary::after {
+  content: '\2013';
+  transform: rotate(180deg);
+}
+
+.service-fold__body {
+  padding-bottom: 1.75rem;
+}
+
+.service-fold__body p:first-child {
+  margin-top: 0;
+}
+
+.service-fold__body ul {
+  margin-bottom: 0;
+}
+
+.service-fold__body li:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 640px) {
