@@ -2956,7 +2956,7 @@ button:focus-visible {
   position: relative;
   height: clamp(70px, 9vw, 110px);
   overflow: hidden;
-  background: var(--color-bg);
+  background: var(--color-navy-darker);
 }
 
 .service-transition-band .service-fold__seam,
