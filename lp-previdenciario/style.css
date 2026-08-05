@@ -2964,6 +2964,12 @@ button:focus-visible {
   clip-path: polygon(0 32%, 100% 0%, 100% 100%, 0 100%);
 }
 
+.service-transition-band .service-fold__fill {
+  /* Mesmo tom escuro do overlay do hero, para nao criar um salto de cor
+     entre o fim da foto e o inicio da faixa */
+  background: var(--color-navy-darker);
+}
+
 .service-fold__container {
   position: relative;
   z-index: 1;
