@@ -2956,18 +2956,12 @@ button:focus-visible {
   position: relative;
   height: clamp(70px, 9vw, 110px);
   overflow: hidden;
-  background: var(--color-navy-darker);
+  background: var(--color-navy-deep);
 }
 
 .service-transition-band .service-fold__seam,
 .service-transition-band .service-fold__fill {
   clip-path: polygon(0 32%, 100% 0%, 100% 100%, 0 100%);
-}
-
-.service-transition-band .service-fold__fill {
-  /* Mesmo tom escuro do overlay do hero, para nao criar um salto de cor
-     entre o fim da foto e o inicio da faixa */
-  background: var(--color-navy-darker);
 }
 
 .service-fold__container {
