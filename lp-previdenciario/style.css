@@ -3024,6 +3024,7 @@ button:focus-visible {
   position: relative;
   padding-top: calc(var(--section-py) + 4rem);
   padding-bottom: 6rem;
+  min-height: 42rem;
   background: var(--color-navy-deep);
   overflow: hidden;
 }
