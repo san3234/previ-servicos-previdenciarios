@@ -3016,7 +3016,7 @@ button:focus-visible {
 .service-hero {
   position: relative;
   padding-top: calc(var(--section-py) + 4rem);
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   background: var(--color-navy-deep);
   overflow: hidden;
 }
