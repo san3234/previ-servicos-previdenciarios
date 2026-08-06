@@ -2928,42 +2928,6 @@ button:focus-visible {
   padding-block: clamp(3rem, 7vw, 5rem);
 }
 
-.service-fold__seam {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, var(--color-gold) 0%, var(--color-gold-4) 100%);
-  clip-path: polygon(0 5%, 100% 0%, 100% 100%, 0 100%);
-  will-change: transform;
-}
-
-.service-fold__fill {
-  position: absolute;
-  inset: 7px 0 0 0;
-  clip-path: polygon(0 5%, 100% 0%, 100% 100%, 0 100%);
-  background: var(--color-navy-deep);
-  will-change: transform;
-}
-
-.service-fold__fill--light {
-  background: var(--color-bg);
-}
-
-/* Faixa curta de transicao entre o hero (foto escura) e a secao seguinte:
-   o azul do hero "invade" o branco formando um trapezio, com o friso
-   dourado exatamente sobre essa borda diagonal - igual ao friso do hero
-   da home, só que numa faixa dedicada em vez de dentro do proprio hero. */
-.service-transition-band {
-  position: relative;
-  height: clamp(70px, 9vw, 110px);
-  overflow: hidden;
-  background: var(--color-navy-deep);
-}
-
-.service-transition-band .service-fold__seam,
-.service-transition-band .service-fold__fill {
-  clip-path: polygon(0 32%, 100% 0%, 100% 100%, 0 100%);
-}
-
 .service-fold__container {
   position: relative;
   z-index: 1;
