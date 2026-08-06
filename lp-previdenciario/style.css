@@ -3030,6 +3030,13 @@ button:focus-visible {
   opacity: 0.55;
 }
 
+/* Para fotos com o rosto na parte de cima da imagem (ex: retrato em pe),
+   evita que o corte automatico do hero, bem largo e baixo, centralize
+   no torso/fundo em vez do rosto */
+.service-hero__img--top {
+  object-position: center 26%;
+}
+
 .service-hero__overlay {
   position: absolute;
   inset: 0;
