@@ -2835,6 +2835,13 @@ button:focus-visible {
   padding-top: calc(var(--section-py) + 4rem);
 }
 
+/* Nas paginas de area de atuacao, o "legal" vem logo apos o hero (que ja
+   tem sua propria altura generosa) - nao precisa do espaco extra usado na
+   pagina de politica de privacidade, que fica direto abaixo do cabecalho. */
+.legal--after-hero {
+  padding-top: var(--section-py);
+}
+
 .legal__container {
   max-width: 760px;
 }
@@ -3035,6 +3042,10 @@ button:focus-visible {
    no torso/fundo em vez do rosto */
 .service-hero__img--top {
   object-position: center 26%;
+}
+
+.service-hero__img--top-tight {
+  object-position: center 40%;
 }
 
 .service-hero__overlay {
